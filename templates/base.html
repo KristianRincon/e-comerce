@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}E-commerce{% endblock %}</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-3">
+            <div class="flex items-center flex-shrink-0 text-white mr-6">
+              <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
+              </svg>
+              <span class="font-semibold text-xl tracking-tight">Mi E-Comerce</span>
+            </div>
+            <div class="block lg:hidden">
+              <input type="checkbox" id="menu-toggle" class="hidden">
+              <label for="menu-toggle" class="menu-icon block cursor-pointer">
+                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <title>Menu</title>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+                </svg>
+              </label>
+              <div class="menu hidden lg:flex lg:items-center lg:w-auto">
+                <div class="text-sm lg:flex-grow">
+                  <a href="{% url 'product_list' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                    Productos
+                  </a>
+                  <a href="{% url 'category_list' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                    Categorias
+                  </a>
+                  <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                    Blog
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="hidden lg:flex lg:items-center lg:w-auto">
+              <div class="text-sm lg:flex-grow">
+                <a href="{% url 'product_list' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                  Productos
+                </a>
+                <a href="{% url 'category_list' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                  Categorias
+                </a>
+                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                  Blog
+                </a>
+              </div>
+            </div>
+          </nav>
+          
+          <style>
+            /* Estilos para el menú hamburguesa */
+            .menu-icon {
+              cursor: pointer;
+            }
+            .menu {
+              display: none;
+            }
+            #menu-toggle:checked + .menu-icon + .menu {
+              display: block;
+            }
+          </style>
+          
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Mi E-commerce</p>
+    </footer>
+</body>
+</html>
