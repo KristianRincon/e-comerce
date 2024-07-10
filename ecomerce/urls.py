@@ -22,6 +22,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls')),
+    path('accounts/', include('accounts.urls'))
 ]
 
 # Añadir configuraciones para servir archivos de medios durante el desarrollo
