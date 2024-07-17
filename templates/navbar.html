@@ -28,6 +28,9 @@
           <a href="{% url 'login' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
             Login
           </a>
+          <a href="{% url 'register' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+            Registrarse
+          </a>
           {% else %}
           <a href="{% url 'profile' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
             Profile
@@ -52,7 +55,10 @@
         {% if not request.user.is_authenticated %}
         <a href="{% url 'login' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
             Login
-          </a>
+        </a>
+        <a href="{% url 'register' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+          Registrarse
+        </a>
         {% else %}
         <a href="{% url 'profile' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
             Profile

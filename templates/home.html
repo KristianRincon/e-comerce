@@ -8,7 +8,7 @@
 <div class="container mx-auto mt-10">
     <div class="relative overflow-hidden">
         <!-- Carousel Wrapper -->
-        <div class="carousel flex transition-transform duration-500 relative">
+        <div class="carousel flex transition-transform duration-500">
             {% for product in products %}
                 
             <div class="min-w-full">
@@ -17,20 +17,23 @@
                 {% endif %}" class="w-full" alt="Wild Landscape">
             </div>
             {% endfor %}
-            
+
         </div>
         <!-- Controls -->
-        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full" onclick="prevSlide()">
-            <-
+        <button class="carousel-button absolute left-0 bg-gray-800 text-white p-2 rounded-full" onclick="prevSlide()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
         </button>
-        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2" onclick="nextSlide()">
-            ->
+        <button class="carousel-button absolute right-0 bg-gray-800 text-white p-2 rounded-full" onclick="nextSlide()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
         </button>
     </div>
 </div>
 
 <script>
-    // JavaScript for slide control (Optional)
     let currentIndex = 0;
     const slides = document.querySelectorAll('.carousel > div');
     const totalSlides = slides.length;
