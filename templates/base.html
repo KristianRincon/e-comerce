@@ -18,8 +18,17 @@
           
     </header>
     <main>
-      {% block content %}{% endblock %}
+      {% if messages %}
+        <div class="container mx-auto my-4">
+          {% for message in messages %}
+            <div class="p-4 rounded border-l-4 {{ message.tags }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
 
+      {% block content %}{% endblock %}
     </main>
     
     <footer class="footer footer-center bg-base-300 text-base-content p-4">

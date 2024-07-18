@@ -10,7 +10,8 @@
         <!-- Carousel Wrapper -->
         <div class="carousel flex transition-transform duration-500">
             {% for product in products %}
-                
+            
+            {% csrf_token %}
             <div class="min-w-full">
                 <img src="{% if product.image %} 
                 {{ product.image.url }} {% else %} https://dummyimage.com/720x400 
