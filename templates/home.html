@@ -13,9 +13,11 @@
             
             {% csrf_token %}
             <div class="min-w-full">
-                <img src="{% if product.image %} 
-                {{ product.image.url }} {% else %} https://dummyimage.com/720x400 
-                {% endif %}" class="w-full" alt="Wild Landscape">
+                <a href="{% url 'product_detail' product.pk %}">
+                    <img src="{% if product.image %} 
+                    {{ product.image.url }} {% else %} https://dummyimage.com/720x400 
+                    {% endif %}" class="w-full" alt="Product Image">
+                </a>
             </div>
             {% endfor %}
 
