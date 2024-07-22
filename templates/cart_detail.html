@@ -1,0 +1,53 @@
+<!-- templates/cart_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+    Carrito de Compras
+{% endblock title %}
+
+{% block content %}
+<div class="container mx-auto mt-10">
+    <div class="flex shadow-md my-10">
+        <div class="w-full bg-white px-10 py-10">
+            <div class="flex justify-between border-b pb-8">
+                <h1 class="font-semibold text-2xl">Carrito de Compras</h1>
+                <h2 class="font-semibold text-2xl">{{ cart_items|length }} Productos</h2>
+            </div>
+            <div class="flex mt-10 mb-5">
+                <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalle del Producto</h3>
+                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Cantidad</h3>
+                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
+                <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
+            </div>
+            {% for item in cart_items %}
+            <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                <div class="flex w-2/5">
+                    <div class="w-20">
+                        <img class="h-24" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    </div>
+                    <div class="flex flex-col justify-between ml-4 flex-grow">
+                        <span class="font-bold text-sm">{{ item.product.name }}</span>
+                        <span class="text-red-500 text-xs">{{ item.product.category }}</span>
+                        <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                    </div>
+                </div>
+                <div class="flex justify-center w-1/5">
+                    <input class="mx-2 border text-center w-8" type="text" value="{{ item.quantity }}">
+                </div>
+                <span class="text-center w-1/5 font-semibold text-sm">{{ item.product.price }}</span>
+                <span class="text-center w-1/5 font-semibold text-sm">{{ item.total_price }}</span>
+            </div>
+            {% endfor %}
+            <div class="flex justify-between items-center mt-10">
+                <a href="{% url 'home' %}" class="flex font-semibold text-indigo-600 text-sm mt-10">
+                    <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H432c8.837 0 16 7.163 16 16v16c0 8.837-7.163 16-16 16H134.059l46.03 46.029c6.247 6.248 6.247 16.379 0 22.627l-11.314 11.314c-6.248 6.248-16.379 6.248-22.627 0L60.686 273.314c-6.248-6.248-6.248-16.379 0-22.627l85.882-85.882c6.248-6.248 16.379-6.248 22.627 0l11.314 11.314c6.247 6.248 6.247 16.379 0 22.627L134.059 296z"/></svg>
+                    Continuar Comprando
+                </a>
+                <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
