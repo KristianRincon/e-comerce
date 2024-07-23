@@ -40,3 +40,23 @@ def cart_detail(request):
         item.total_price = item.product.price * item.quantity
     return render(request, 'cart_detail.html', {'cart': cart, 'cart_items': cart_items})
 
+@login_required
+def remove_from_cart(request, product_id):
+    # Obtener el producto por su ID, si no existe devuelve un 404
+    product = get_object_or_404(Product, id=product_id)
+    # Obtener el carrito del usuario. No es necesario verificar si se crea un nuevo carrito porque estamos removiendo productos
+    cart = Cart.objects.get(user=request.user)
+
+    try:
+        # Obtener el CartItem correspondiente al carrito y producto
+        cart_item = CartItem.objects.get(cart=cart, product=product)
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+        else:
+            cart_item.delete()
+        messages.success(request, f'{product.name} ha sido eliminado del carrito')
+    except CartItem.DoesNotExist:
+        messages.error(request, f'{product.name} no se encuentra en el carrito')
+
+    return redirect('cart_detail')
