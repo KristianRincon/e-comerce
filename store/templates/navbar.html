@@ -37,7 +37,15 @@
                     Profile
                 </a>
                 <a href="{% url 'cart_detail' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                    <img src={% static 'store/images/cart_icon.svg' %} class="h-6 w-6" alt="Carrito de compras">
+                    <!-- <img src={% static 'store/images/cart_icon.svg' %} class="h-6 w-6" alt="Carrito de compras"> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                    class="flex items-center block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
+                        <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
+                        <path d="M17 17h-11v-14h-2"/>
+                        <path d="M6 5l14 1l-1 7h-13"/>
+                    </svg>
                 </a>
                 <form id="logout-form" method="post" action="{% url 'logout' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                     {% csrf_token %}
@@ -67,9 +75,16 @@
                 Profile
             </a>
             <a href="{% url 'cart_detail' %}" class="flex items-center block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-              <img src={% static 'store/images/cart_icon.svg' %} class="h-6 w-6 mr-1" alt="Carrito de compras">
-              Carrito
-          </a>
+                <!-- <img src="{% static 'store/images/cart_icon.svg' %}" alt="Carrito de compras" class="w-6 h-6 fill-current"> -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                class="flex items-center block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
+                    <path d="M17 17h-11v-14h-2"/>
+                    <path d="M6 5l14 1l-1 7h-13"/>
+                </svg>
+            </a>
             <form id="logout-form" method="post" action="{% url 'logout' %}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                 {% csrf_token %}
                 <button type="submit">Logout</button>
@@ -90,9 +105,13 @@
     #menu-toggle:checked + .menu-icon + .menu {
         display: block;
     }
-    /* Estilo para ajustar el ícono del carrito */
-    .navbar-icon {
-        width: 24px;
-        height: 24px;
-    }
+
+.cart-icon {
+    fill: #319795; /* Reemplaza este color con el valor de la clase text-teal-200 de Tailwind CSS */
+}
+
+.cart-icon:hover {
+    fill: #ffffff; /* Reemplaza este color con el valor de la clase hover:text-white de Tailwind CSS */
+}
+
 </style>
