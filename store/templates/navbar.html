@@ -8,6 +8,10 @@
             </svg>
             <span class="font-semibold text-xl tracking-tight">Mi E-Comerce</span>
         </a>
+        <form method="GET" action="{% url 'search_products' %}" class="flex items-center">
+            <input type="text" name="q" placeholder="Buscar productos" class="px-4 py-2 border rounded-md focus:outline-none" required>
+            <button type="submit" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md">Buscar</button>
+        </form>
     </div>
     <div class="block lg:hidden">
         <input type="checkbox" id="menu-toggle" class="hidden">

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Category, CartItem, Cart
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q  # Importa Q para realizar consultas complejas
 
 def home(request):
     products = Product.objects.all()
@@ -60,3 +61,19 @@ def remove_from_cart(request, product_id):
         messages.error(request, f'{product.name} no se encuentra en el carrito')
 
     return redirect('cart_detail')
+
+# Busqueda de productos
+def search_products(request):
+    query = request.GET.get('q')
+    results = []
+
+    if query:
+        search_terms = query.split()  # Divide el término en varias palabras
+        for term in search_terms:
+            results = Product.objects.filter(
+                Q(name__icontains=term) |
+                Q(description__icontains=term) |
+                Q(category__name__icontains=term)
+            ).distinct()  # Evita duplicados en los resultados
+
+    return render(request, 'search_results.html', {'query': query, 'results': results})

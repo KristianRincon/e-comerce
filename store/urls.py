@@ -6,7 +6,8 @@ from .views import (home,
                     product_detail, 
                     add_to_cart, 
                     cart_detail, 
-                    remove_from_cart)
+                    remove_from_cart,
+                    search_products)
 
 urlpatterns = [
     path('', home, name='home'),
@@ -16,4 +17,5 @@ urlpatterns = [
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('cart/', cart_detail, name='cart_detail'),
     path('remove_from_cart/<int:product_id>', remove_from_cart, name='remove_from_cart'),
+    path('search/', search_products, name='search_products'),
 ]

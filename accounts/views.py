@@ -80,25 +80,3 @@ class CustomPasswordChangeView(PasswordChangeView):
     def form_invalid(self, form):
         messages.error(self.request, 'Hubo un error al cambiar tu contraseña')
         return super().form_invalid(form)
-
-
-from django.views.generic import TemplateView
-
-class TestView(TemplateView):
-    template_name = 'password_reset.html'
-
-
-
-# from django.contrib.auth.views import PasswordChangeView
-# from django.urls import reverse_lazy
-# from django.contrib.messages.views import SuccessMessageMixin
-
-# class CustomPasswordChangeView(SuccessMessageMixin, PasswordChangeView):
-#     template_name = 'registration/password_change_form.html'
-#     success_url = reverse_lazy('password_changed')
-#     success_message = "Tu contraseña ha sido cambiada exitosamente."
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = 'Cambiar contraseña'
-#         return context
